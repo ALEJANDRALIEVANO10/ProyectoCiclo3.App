@@ -1,0 +1,22 @@
+@page
+@model ProyectoCiclo3.App.Frontend.Pages.FormUsuarioModel
+@{
+}
+ 
+<div class="text-center">
+<form method=”POST”>
+  <label for="ID" class="form-label">ID:</label>
+  <input type ="number" id="numero" class="form-control"></select>
+  <label for="Nombre" class="form-label">Nombre:</label>
+  <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre">
+   <label for="Apellido" class="form-label">Apellido:</label>
+  <input type="text" class="form-control" id="Apellido" name="Apellido" placeholder="Apellido">
+   <label for="Apellido" class="form-label">Dirección:</label>
+  <input type="text" class="form-control" id="direccion" name="direccion" placeholder="direccion">
+   <label for="Apellido" class="form-label">Telefono:</label>
+  <input type="number" class="form-control" id="telefono" name="telefono" placeholder="telefono">
+  <hr>
+  <button type="submit" class="btn btn-success">Crear</button>
+  <a href="../" class="btn btn-danger btn-sm" role="button">Cancelar</a>
+</form>
+</div>

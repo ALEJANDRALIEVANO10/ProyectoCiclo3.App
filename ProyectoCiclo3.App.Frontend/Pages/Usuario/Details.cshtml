@@ -1,0 +1,15 @@
+@page
+@model ProyectoCiclo3.App.Frontend.Pages.DetailsUsiarioModel
+@{
+    var usuario = Model.Usuario;
+}
+ 
+<ul class="list-group list-group-flush">
+  <li class="list-group-item"> <b>id: </b> @usuario.id</li>
+  <li class="list-group-item"> <b>Nombre: </b> @usuario.nombre</li>
+  <li class="list-group-item"> <b>Apellido: </b> @usuario.apellido</li>
+  <li class="list-group-item"><b>Direccion: </b> @usuario.direccion</li>
+  <li class="list-group-item"><b>Telefono: </b> @usuario.telefono</li>
+</ul>
+
+<a href="/Usuarios/List" class="btn btn-danger btn-sm" role="button">Cancelar</a>
