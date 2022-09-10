@@ -1,38 +1,40 @@
 @page
+@model ProyectoCiclo3.App.Frontend.Pages.ListUsuarioModel
 @{
 }
  
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">NOMBRES</th>
-      <th scope="col">APELLIDOS</th>
-      <th scope="col">DIRECCION</th>
-      <th scope="col">TELEFONO</th>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Direccion</th>
+      <th>Telefono</th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Javier Alexis</td>
-      <td>Peña VArgas</td>
-      <td>calee1 # 3-23</td>
-      <td>325697896</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Luciana Salome</td>
-      <td>Peña Cruz</td>
-      <td>carrea 4 # 3-23</td>
-      <td>3158963254</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>David Alexis</td>
-      <td>Peña Cruz</td>
-      <td>calle 4 # 6-53</td>
-      <td>3125896325</td>
-    </tr>
+     @foreach (var usuario in Model.Usuarios)
+    {
+        <tr>
+            <td>@usuario.id</td>
+            <td>@usuario.nombre</td>
+            <td>@usuario.apellido</td>
+            <td>@usuario.direccion</td>
+            <td>@usuario.telefono</td>
+            <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <a class="btn btn-info" asp-page="./Details" asp-route-usuarioId="@usuario.id"><i class="fas fa-adjust"></i>Ver</a>
+              <a class="btn btn-info" asp-page="./Edit" asp-route-usuarioId="@usuario.id">Editar</a>
+              <form method="POST">
+                <input type="number" class="form-control d-none" id="id" name="id" placeholder="id" asp-for="@usuario.id">
+                <button type="submit"class="btn btn-danger" href="">Eliminar</button>
+              </form>
+              </div>
+            </td>
+        </tr>
+    }
+ 
   </tbody>
 </table>

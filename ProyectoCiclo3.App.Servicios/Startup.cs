@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ProyectoCiclo3.App.Persistencia.AppRepositorios;
+
 
 namespace ProyectoCiclo3.App.Servicios
 {
@@ -26,6 +28,8 @@ namespace ProyectoCiclo3.App.Servicios
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton<RepositorioEncomiendas, RepositorioEncomiendas>();
+            services.AddSingleton<RepositorioUsuarios, RepositorioUsuarios>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
