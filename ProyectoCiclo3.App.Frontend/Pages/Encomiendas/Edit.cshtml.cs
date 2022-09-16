@@ -34,7 +34,7 @@ namespace ProyectoCiclo3.App.Frontend.Pages
             }
             if(Encomienda.id>0)
             {
-            // Encomienda = repositorioEncomiendas.Update(Encomienda);
+              Encomienda = repositorioEncomiendas.Update(Encomienda);
             }
             return RedirectToPage("./List");
         }

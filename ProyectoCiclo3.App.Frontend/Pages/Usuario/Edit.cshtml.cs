@@ -34,7 +34,7 @@ namespace ProyectoCiclo3.App.Frontend.Pages
             }
             if(Usuario.id>0)
             {
-            // Usuario = repositorioUsuarios.Update(Usuario);
+              Usuario = repositorioUsuarios.Update(Usuario);
             }
             return RedirectToPage("./List");
         }
