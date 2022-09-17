@@ -22,18 +22,18 @@ namespace ProyectoCiclo3.App.Persistencia.AppRepositorios
             return _appContext.Servicios.Find(id);
         }
 
-        public Servicio Update(Servicio newServicio){
-            var encomienda = _appContext.Servicios.Find(newServicio.id);
-            if(encomienda != null){
-                encomienda.origen = newServicio.origen;
-                encomienda.destino = newServicio.destino;
-                encomienda.fecha = newServicio.fecha;
-                encomienda.hora = newServicio.hora;
-                encomienda.encomienda = newServicio.encomienda;
+        public Servicio Update(int id, int origen, int destino, string fecha, string hora, int encomienda){
+            var servicio = _appContext.Servicios.Find(id);
+            if(servicio != null){
+                servicio.destino = _appContext.Usuarios.Find(destino);
+                servicio.origen = _appContext.Usuarios.Find(origen);  
+                servicio.encomienda = _appContext.Encomiendas.Find(encomienda); 
+                servicio.fecha = DateTime.Parse(fecha);
+                servicio.hora = hora;
                 //Guardar en base de datos
                  _appContext.SaveChanges();
             }
-        return encomienda;
+        return servicio;
         }
 
         public Servicio Create(int origen, int destino, string fecha, string hora, int encomienda)
