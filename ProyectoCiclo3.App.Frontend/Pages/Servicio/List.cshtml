@@ -1,38 +1,60 @@
 @page
+@model ProyectoCiclo3.App.Frontend.Pages.ListServicioModel
 @{
 }
  
-<table class="table table-hover">
+<h1>Listado de Servicio</h1>
+<table class="table">
   <thead>
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">ORIGEN</th>
-      <th scope="col">DESTINO</th>
-      <th scope="col">FECHA Y HORA</th>
-      <th scope="col">ENCOMIENDA</th>
+      <th scope="col">#</th>
+      <th scope="col">Origen</th>
+      <th scope="col">Destino</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Hora</th>
+      <th scope="col">Encomienda</th>
+      <th>Acciones</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>BOGOTA</td>
-      <td>TUNJA</td>
-      <td>15-08-2022 12:30 PM</td>
-      <td>CAJA</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>TUNJA</td>
-      <td>CALI</td>
-      <td>31-08-2022 15:30 PM</td>
-      <td>GUACAL</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>CALI</td>
-      <td>BARRANQUILLA</td>
-      <td>01-09-2022 2:30 AM</td>
-      <td>CAJA</td>
-    </tr>
-  </tbody>
+    @foreach (var servicio in Model.Servicios)
+    {
+        <tr>
+            <td>@servicio.id</td>
+            <td>@servicio.origen.nombre @servicio.origen.apellido</td>
+            <td>@servicio.destino.nombre @servicio.destino.apellido</td>
+            <td>@servicio.fecha</td>
+            <td>@servicio.hora</td>
+            <td>@servicio.encomienda.descripcion</td>
+            <td>
+              <a class="btn btn-info" asp-page="./Details" asp-route-servicioId="@servicio.id">Ver</a>
+              <a class="btn btn-info" asp-page="./Edit" asp-route-servicioId="@servicio.id">Editar</a>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal_@servicio.id">
+                    Eliminar
+                  </button>
+
+                  <div class="modal fade" id="exampleModal_@servicio.id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Eliminar Registro</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          ¿Esta seguro que desea eliminar el Servicio: @servicio.origen.nombre @servicio.origen.apellido - @servicio.destino.nombre @servicio.destino.apellido?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <form method="POST">
+                            <input type="number" class="form-control d-none" id="id" name="id" placeholder="id" asp-for="@servicio.id">
+                            <button type="submit"class="btn btn-danger" href="">Eliminar</button>
+                        </form>                         
+                       </div>
+                      </div>
+                    </div>
+                  </div>
+              </td>
+        </tr>
+    }
 </table>
